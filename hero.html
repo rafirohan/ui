@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hero Section</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: Georgia, "Times New Roman", serif; }
+
+  /* 1. PARENT: position relative = reference box for the children */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 480px;
+    overflow: hidden;
+  }
+
+  /* 2. BACKGROUND PHOTO: position absolute fills the whole parent */
+  .hero__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;      /* photo covers the area without stretching */
+    z-index: 1;
+  }
+
+  /* 3. OVERLAY: dark layer above the photo so text is readable */
+  .hero__overlay {
+    position: absolute;
+    inset: 0;               /* same as top/right/bottom/left: 0 */
+    background: linear-gradient(to top, rgba(0,0,0,.65), rgba(0,0,0,.15));
+    z-index: 2;
+  }
+
+  /* 4. TEXT: position absolute, placed inside the hero */
+  .hero__content {
+    position: absolute;
+    left: 8%;
+    bottom: 14%;
+    max-width: 560px;
+    color: #fff;
+    z-index: 3;             /* above photo and overlay */
+  }
+  .hero__content h1 {
+    font-size: clamp(2.4rem, 6vw, 4.5rem);
+    line-height: 1.05;
+    margin-bottom: 16px;
+  }
+  .hero__content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 28px;
+  }
+  .hero__btn {
+    display: inline-block;
+    padding: 14px 28px;
+    background: #fff;
+    color: #111;
+    text-decoration: none;
+    font-family: system-ui, sans-serif;
+    font-weight: 600;
+    border-radius: 4px;
+  }
+  .hero__btn:hover, .hero__btn:focus-visible { background: #f0c24b; }
+
+  /* 5. SMALL BADGE: absolute at top-right corner */
+  .hero__badge {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    z-index: 3;
+    padding: 8px 14px;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,.7);
+    font-family: system-ui, sans-serif;
+    font-size: .85rem;
+  }
+
+  @media (max-width: 600px) {
+    .hero__content { left: 6%; right: 6%; bottom: 10%; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <!-- Replace the src with your own photo -->
+  <img class="hero__image"
+       src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80"
+       alt="Mountain lake at sunrise">
+  <div class="hero__overlay"></div>
+
+  <span class="hero__badge">Open daily</span>
+
+  <div class="hero__content">
+    <h1>Wake up where the mountains meet the water</h1>
+    <p>Quiet cabins, early mornings and trails that start at your door.</p>
+    <a class="hero__btn" href="#book">Book your stay</a>
+  </div>
+</section>
+
+</body>
+</html>
